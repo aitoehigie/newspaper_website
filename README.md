@@ -4,7 +4,7 @@
 Django
 
 ## Features
-1.) Authentication -> with CustomUser
+1.) Authentication
 2.) Authorization
 3.) Articles
 4.) Commenting System
