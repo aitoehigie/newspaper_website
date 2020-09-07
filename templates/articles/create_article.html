@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2> Create new article </h2>
+<b>{{ message }}</b>
+<form action="" method="POST">
+{% csrf_token %}
+{{ form | crispy }}
+<input type="submit" value="Create article" class="btn btn-success" />
+</form>
+{% endblock content %}

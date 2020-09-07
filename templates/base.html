@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Newspaper App</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<a class="navbar-brand" href="{% url 'home' %}">Newspaper App</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarCollapse">
+{% if user.is_authenticated %}
+<ul class="navbar-nav ml-auto">
+<li class="nav-item"><a href="{% url 'create_article' %}">+ New</a></li>
+<li class="nav-item">
+<a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Hi, {{user.username}}</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+<a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></a>
+</div>
+</li>
+</ul>
+{% else %}
+<form class="form-inline ml-auto">
+<a href="{% url 'login' %}" class="btn btn-outline-secondary">Log In</a>| <a href="{% url 'signup' %}" class="btn btn-primary ml-2">Sign Up</a>
+</form>
+{% endif %}
+</div>
+</nav>
+<div class="container">
+{% block content %}
+{% endblock content %}
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
